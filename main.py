@@ -41,6 +41,7 @@ def flaskApp(db: str) -> None:
 
         con.commit()
         con.close()
+        g._database = None
 
         if len(movieList) > 0:
             return str(movieList)
