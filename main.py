@@ -25,6 +25,9 @@ def flaskApp(db: str) -> None:
     @app.route('/query')
     def query() -> str:
         movieName: str = request.args.get('moviename')
+        if movieName == None:
+            return "You must pass a valid arguement."
+        
         con: sqlite3.Connection = dbManager.get_db()
         cursor: sqlite3.Cursor = con.cursor()
 
