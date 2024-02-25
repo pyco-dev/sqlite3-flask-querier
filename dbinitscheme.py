@@ -10,9 +10,9 @@ def main() -> None:
 
     cur.execute("CREATE TABLE movies(id, name, pattern)")
     cur.execute("INSERT INTO movies(id,name,pattern) VALUES (1, 'Interstellar', 'Inter')")
-    cur.execute("INSERT INTO movies(id,name,pattern) VALUES (2, 'Jurrasic Park', 'Jurr')")
-    cur.execute("INSERT INTO movies(id,name,pattern) VALUES (3, 'Jurrasic Park 2', 'Jurr')")
-    cur.execute("INSERT INTO movies(id,name,pattern) VALUES (4, 'Jurrasic Park 3', 'Jurr')")
+    cur.execute("INSERT INTO movies(id,name,pattern) VALUES (2, 'Jurrassic Park', 'Jurr')")
+    cur.execute("INSERT INTO movies(id,name,pattern) VALUES (3, 'Jurrassic Park 2', 'Jurr')")
+    cur.execute("INSERT INTO movies(id,name,pattern) VALUES (4, 'Jurrassic Park 3', 'Jurr')")
 
     con.commit()
     con.close()
