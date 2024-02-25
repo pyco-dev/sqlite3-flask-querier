@@ -27,20 +27,23 @@ def flaskApp(db: str) -> None:
         movieName: str = request.args.get('moviename')
         if movieName == None:
             return "You must pass a valid arguement."
-        
+
         con: sqlite3.Connection = dbManager.get_db()
         cursor: sqlite3.Cursor = con.cursor()
 
         movies = cursor.execute("SELECT * FROM movies").fetchall()
         movieList: list[str] = []
 
+        counter: int = 0
         for movie in movies:
-            qString = f"SELECT name FROM movies WHERE '{movieName.lower()}' LIKE '%{movie[2].lower()}%'; "
+            qString: str = f"SELECT name FROM movies WHERE '{movieName.lower()}' LIKE '%{movie[2].lower()}%'; "
             try:
-                query: str = cursor.execute(qString).fetchone()[0]
-                movieList.append(query)
+                query: list = cursor.execute(qString).fetchall()[counter]
+                movieList.append(query[0])
             except:
                 pass
+
+            counter += 1
 
         con.commit()
         con.close()
